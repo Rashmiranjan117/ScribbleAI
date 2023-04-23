@@ -4,15 +4,12 @@ var bodyParser = require("body-parser");
 const cors = require("cors");
 const { Configuration, OpenAIApi } = require("openai");
 const app = express();
+const { textRouter } = require("./Routes/text.routes");
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors());
 
 const configuration = new Configuration({
   organization: "org-OIwTmh7g3MFBKJxJtwO4YN0K",
@@ -21,9 +18,11 @@ const configuration = new Configuration({
 
 const ai = new OpenAIApi(configuration);
 
-app.post("/", async (req, res) => {
-  const { messages } = req.body;
-});
+app.use("/text", textRouter);
+
+// app.post("/", async (req, res) => {
+//   const { messages } = req.body;
+// });
 
 app.listen(process.env.port, () => {
   try {
