@@ -4,7 +4,7 @@ import './sass/nav.css'
 const Navbar = () => {
   return (
     <div>
-      
+      Nav
     </div>
   )
 }

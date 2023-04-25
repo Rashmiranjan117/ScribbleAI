@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import './sass/text/text.css'
 
 export interface ResType {
   id: string;
@@ -42,13 +43,23 @@ const Text = () => {
   };
   console.log(response);
   return (
-    <div>
+    <div className="text">
+      <section className="sidebar">
+        <button>+ New Chat</button>
+        <ul className="history">
+          <li>Demo</li>
+        </ul>
+        <nav>Made by User</nav>
+      </section>
+      <section className="main">
       <input
         type="text"
         placeholder="Enter Query"
         onChange={(e) => setQuery(e.target.value)}
       />
       <button onClick={handlePost}>Send</button>
+      </section>
+     
     </div>
   );
 };
